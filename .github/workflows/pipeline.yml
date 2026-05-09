@@ -16,11 +16,18 @@ jobs:
         with: 
           node-version: 16
       - name: Install Dependencies
-        run: npm install --no-audit --no-fund --no-optional
+        run: npm ci
       - name: Lint
         run: npm run eslint
       - name: Build
         run: npm run build
       - name: Test
         run: npm test
+      - name: E2E Tests
+        uses: cypress-io/github-action@v7
+        with:
+          command: npm run test:e2e
+          start: npm run start:test
+          wait-on: 'http://localhost:5000'
+          wait-on-timeout: 120000
         
