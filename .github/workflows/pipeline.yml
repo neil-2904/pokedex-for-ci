@@ -27,7 +27,7 @@ jobs:
         uses: cypress-io/github-action@v7
         with:
           command: npm run test:e2e
-          start: npm run start:test
+          start: npm run start-test
           wait-on: 'http://localhost:5000'
           wait-on-timeout: 120000
         
